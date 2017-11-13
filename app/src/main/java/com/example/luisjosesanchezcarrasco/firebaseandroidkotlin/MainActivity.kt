@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,9 +24,9 @@ class MainActivity : AppCompatActivity() {
         val menuListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 println("data change")
-               // val contacto : Contactos  = dataSnapshot.getValue<Contactos>(Contactos::class.java)
-                val contacto = dataSnapshot.getValue<Contactos>(Contactos::class.java)
-                 Log.i("Contacto", contacto.nombre)
+                // val contacto : Contactos  = dataSnapshot.getValue<Contactos>(Contactos::class.java)
+                //val contacto = dataSnapshot.getValue<Contactos>(Contactos::class.java)
+               // Log.i("Contacto", "ffffffffffffffffffffff "+contacto.nombre)
                 //Log.i("Valor", dataSnapshot.getValue<Int>(Int::class.java).toString())
 
                 for (objj  in dataSnapshot.children){
@@ -53,13 +54,16 @@ class MainActivity : AppCompatActivity() {
         myRef.addListenerForSingleValueEvent(menuListener)  //solo se ejecuta una vez
 
 */
-       // myRef.child("contactos").addValueEventListener(menuListener)
+        // myRef.child("contactos").addValueEventListener(menuListener)
 
         button.setOnClickListener {
             var c= Contactos()
-            c.nombre="ffff"
-            c.telefono=3333333
 
+
+            val random = Random()
+
+            c.telefono= random.nextLong()
+            c.nombre="nombre "+c.telefono
             myRef.child("contactos").push().setValue(c)
         }
 
