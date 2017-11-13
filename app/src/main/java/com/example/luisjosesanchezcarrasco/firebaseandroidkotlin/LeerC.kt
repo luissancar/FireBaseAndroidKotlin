@@ -1,3 +1,6 @@
+package com.example.luisjosesanchezcarrasco.firebaseandroidkotlin
+
+
 class LeerC() {
     public fun convierte(): Pair<String,String> {
         var cadenaentera="{'uno','dos'}"
