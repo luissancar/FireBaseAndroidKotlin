@@ -32,8 +32,10 @@ class MainActivity : AppCompatActivity() {
                 for (objj  in dataSnapshot.children){
 
                     val registro=objj.getValue()
-
-                    Log.i("dato",registro.toString())
+                    val datos=LeerC(registro.toString())
+                   // println(registro.toString())
+                   // println(datos.convierte().first)
+                    Log.i("dato",datos.convierte().first+"   "+datos.convierte().second)
 
 
                 }
